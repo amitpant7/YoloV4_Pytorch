@@ -7,8 +7,8 @@ from config import C, S, DEVICE
 
 
 def ciou(pred_box, gt_box):
-    pred_box = convert_to_corners(pred_box)
-    gt_box = convert_to_corners(gt_box)
+    pred_box = convert_to_corners(torch.exp(pred_box))
+    gt_box = convert_to_corners(torch.exp(gt_box))
     loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
     # ious = 1 - loss
 
@@ -16,7 +16,7 @@ def ciou(pred_box, gt_box):
     #     # Handle the case where all elements are nan
     #     print("All elements are nan.")
 
-    return loss.nanmean(), 0
+    return loss, 0
 
 
 class YoloV4_Loss(torch.nn.Module):
