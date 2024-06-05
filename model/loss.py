@@ -109,6 +109,6 @@ class YoloV4_Loss(torch.nn.Module):
             )
 
             losses.append(loss)
-            print("Losses", bb_cord_loss, no_obj_loss, obj_loss, class_loss)
+            print("Losses", bb_cord_loss.item(), no_obj_loss.item(), obj_loss.item(), class_loss.item())
 
         return torch.stack(losses).mean()
