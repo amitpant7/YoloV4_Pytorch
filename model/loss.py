@@ -12,6 +12,10 @@ def ciou(pred_box, gt_box):
     loss = complete_box_iou_loss(pred_box, gt_box)
     ious = 1 - loss
 
+    if torch.isnan(loss).all():
+        # Handle the case where all elements are nan
+        print("All elements are nan.")
+
     return loss.nanmean(), ious.detach()
 
 
