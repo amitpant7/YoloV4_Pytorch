@@ -2,8 +2,8 @@ import torch
 from torch.nn import CrossEntropyLoss, MSELoss, BCEWithLogitsLoss
 from torchvision.ops import complete_box_iou_loss
 
-from ..utils import convert_to_corners
-from ..config import C, S, DEVICE
+from utils.utils import convert_to_corners
+from config import C, S, DEVICE
 
 
 def ciou(pred_box, gt_box):

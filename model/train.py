@@ -3,7 +3,7 @@ from tqdm.auto import tqdm
 import shutil
 import math
 import os
-from ..utils import check_model_accuracy
+from utils.utils import check_model_accuracy
 
 from config import *
 

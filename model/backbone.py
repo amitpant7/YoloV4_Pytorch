@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from model.model_utils import *
+from .model_utils import *
 
 # implementation of YOLOv4 backbone CSPDarknet53
 

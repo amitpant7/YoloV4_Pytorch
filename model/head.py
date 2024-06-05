@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from model.model_utils import CBLBlock
+from .model_utils import CBLBlock
 
 
 class Head(nn.Module):

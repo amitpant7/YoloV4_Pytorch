@@ -1,7 +1,7 @@
 import torch
 from torchvision import datasets
 from torchvision import tv_tensors
-from ..config import *
+from config import *
 
 
 # lets write custom tranform to transform the targets in appropriate format.
