@@ -32,4 +32,4 @@ class YoloV4(nn.Module):
             for x in out
         ]
 
-        return out
+        return [out[2], out[1], out[0]]
