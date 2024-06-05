@@ -175,6 +175,7 @@ def copy_wts(model, source_wts):
     return model
 
 
+import gc
 def check_model_accuracy(all_preds, all_targets, thres=0.5):
     """
     all_preds: list of batches of list of tensors [[3 preds], ...]
@@ -189,37 +190,46 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
 
         sig = torch.nn.Sigmoid()
 
-        preds = []  # concatenated preds in format [pred1, pred2, pred3]
-        targets = []
-        for i in range(3):
-            preds.append(torch.cat([x[i] for x in all_preds], dim=0))
-            targets.append(torch.cat([x[i] for x in all_targets], dim=0))
+        # Process each scale separately to save memory
+        for scale in range(3):
+            preds = []
+            targets = []
 
-        for i in range(len(preds)):
-            obj = targets[i][..., 0] == 1  # mask
-            no_obj = targets[i][..., 0] == 0
+            for batch_preds, batch_targets in zip(all_preds, all_targets):
+                preds.append(batch_preds[scale])
+                targets.append(batch_targets[scale])
 
-            preds[i][..., 0] = sig(preds[i][..., 0])
+            preds = torch.cat(preds, dim=0)
+            targets = torch.cat(targets, dim=0)
+
+            obj = targets[..., 0] == 1  # mask
+            no_obj = targets[..., 0] == 0
+
+            preds[..., 0] = sig(preds[..., 0])
 
             # Classification Accuracy
-            class_pred = torch.argmax(preds[i][obj][..., 5:], dim=-1)
-            class_target = torch.argmax(targets[i][obj][..., 5:], dim=-1)
+            class_pred = torch.argmax(preds[obj][..., 5:], dim=-1)
+            class_target = torch.argmax(targets[obj][..., 5:], dim=-1)
             class_corr += torch.sum(class_pred == class_target)
             total_class += torch.sum(obj)
 
             # Object detection recall and precision
-            obj_corr += torch.sum(preds[i][obj][..., 0] > thres)
+            obj_corr += torch.sum(preds[obj][..., 0] > thres)
             total_obj += torch.sum(obj) + 1e-6  # to avoid divide by zero
-            obj_preds = preds[i][..., 0] > thres
+            obj_preds = preds[..., 0] > thres
             correct_obj_preds = obj & obj_preds
             total_obj_preds = torch.sum(obj_preds) + 1e-6
 
             # No-object detection recall and precision
-            no_obj_corr += torch.sum(preds[i][no_obj][..., 0] < thres)
+            no_obj_corr += torch.sum(preds[no_obj][..., 0] < thres)
             total_no_obj += torch.sum(no_obj)
-            no_obj_preds = preds[i][..., 0] < thres
+            no_obj_preds = preds[..., 0] < thres
             correct_no_obj_preds = no_obj & no_obj_preds
             total_no_obj_preds = torch.sum(no_obj_preds)
+
+            # Free up memory by forcing garbage collection
+            del preds, targets
+            gc.collect()
 
         class_score = (100 * class_corr / total_class).item()
         # Recall calculations
@@ -235,3 +245,4 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
     print("Object Score (Precision): {:.2f}%".format(obj_precision))
     print("No-object Score (Recall): {:.2f}%".format(no_obj_recall))
     print("No-object Score (Precision): {:.2f}%".format(no_obj_precision))
+
