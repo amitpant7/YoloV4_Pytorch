@@ -9,14 +9,14 @@ from config import C, S, DEVICE
 def ciou(pred_box, gt_box):
     pred_box = convert_to_corners(pred_box)
     gt_box = convert_to_corners(gt_box)
-    loss = complete_box_iou_loss(pred_box, gt_box)
-    ious = 1 - loss
+    loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
+    # ious = 1 - loss
 
-    if torch.isnan(loss).all():
-        # Handle the case where all elements are nan
-        print("All elements are nan.")
+    # if torch.isnan(loss).all():
+    #     # Handle the case where all elements are nan
+    #     print("All elements are nan.")
 
-    return loss.nanmean(), ious.detach()
+    return loss.nanmean(), 0
 
 
 class YoloV4_Loss(torch.nn.Module):
@@ -80,6 +80,12 @@ class YoloV4_Loss(torch.nn.Module):
         for i in range(len(self.S)):
             pred = preds[i]
             ground_truth = ground_truths[i]
+
+            #avoid loss calculation if there aren't any targets assigned
+            is_zero = torch.all(ground_truth == 0)
+            
+            if is_zero:
+                continue
 
             # Identify object and no-object cells
             obj = ground_truth[..., 0] == 1
