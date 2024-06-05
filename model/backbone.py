@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from .model_utils import *
+from utils.utils import copy_wts
 
 # implementation of YOLOv4 backbone CSPDarknet53
 
@@ -60,3 +61,8 @@ class CSPDarknet53(nn.Module):
                     all_layers += [FeatureOut(in_channels)]
 
         return all_layers
+
+    def _init_wts(self, src_wt_path):
+        src_wts = torch.load(src_wt_path)
+        model = copy_wts(self, src_wts)
+        return model
