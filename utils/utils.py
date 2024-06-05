@@ -181,53 +181,54 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
     all_targets: list of batches of list of tensors [[3 targets], ...]
     thres: threshold for objectness score
     """
-    total_class, class_corr = 0, 0
-    total_obj, obj_corr = 0, 0
-    total_no_obj, no_obj_corr = 0, 0
-    total_class_preds, correct_class_preds = 0, 0
+    with torch.no_grad()
+        total_class, class_corr = 0, 0
+        total_obj, obj_corr = 0, 0
+        total_no_obj, no_obj_corr = 0, 0
+        total_class_preds, correct_class_preds = 0, 0
 
-    sig = torch.nn.Sigmoid()
+        sig = torch.nn.Sigmoid()
 
-    preds = []  # concatenated preds in format [pred1, pred2, pred3]
-    targets = []
-    for i in range(3):
-        preds.append(torch.cat([x[i] for x in all_preds], dim=0))
-        targets.append(torch.cat([x[i] for x in all_targets], dim=0))
+        preds = []  # concatenated preds in format [pred1, pred2, pred3]
+        targets = []
+        for i in range(3):
+            preds.append(torch.cat([x[i] for x in all_preds], dim=0))
+            targets.append(torch.cat([x[i] for x in all_targets], dim=0))
 
-    for i in range(len(preds)):
-        obj = targets[i][..., 0] == 1  # mask
-        no_obj = targets[i][..., 0] == 0
+        for i in range(len(preds)):
+            obj = targets[i][..., 0] == 1  # mask
+            no_obj = targets[i][..., 0] == 0
 
-        preds[i][..., 0] = sig(preds[i][..., 0])
+            preds[i][..., 0] = sig(preds[i][..., 0])
 
-        # Classification Accuracy
-        class_pred = torch.argmax(preds[i][obj][..., 5:], dim=-1)
-        class_target = torch.argmax(targets[i][obj][..., 5:], dim=-1)
-        class_corr += torch.sum(class_pred == class_target)
-        total_class += torch.sum(obj)
+            # Classification Accuracy
+            class_pred = torch.argmax(preds[i][obj][..., 5:], dim=-1)
+            class_target = torch.argmax(targets[i][obj][..., 5:], dim=-1)
+            class_corr += torch.sum(class_pred == class_target)
+            total_class += torch.sum(obj)
 
-        # Object detection recall and precision
-        obj_corr += torch.sum(preds[i][obj][..., 0] > thres)
-        total_obj += torch.sum(obj) + 1e-6  # to avoid divide by zero
-        obj_preds = preds[i][..., 0] > thres
-        correct_obj_preds = obj & obj_preds
-        total_obj_preds = torch.sum(obj_preds) + 1e-6
+            # Object detection recall and precision
+            obj_corr += torch.sum(preds[i][obj][..., 0] > thres)
+            total_obj += torch.sum(obj) + 1e-6  # to avoid divide by zero
+            obj_preds = preds[i][..., 0] > thres
+            correct_obj_preds = obj & obj_preds
+            total_obj_preds = torch.sum(obj_preds) + 1e-6
 
-        # No-object detection recall and precision
-        no_obj_corr += torch.sum(preds[i][no_obj][..., 0] < thres)
-        total_no_obj += torch.sum(no_obj)
-        no_obj_preds = preds[i][..., 0] < thres
-        correct_no_obj_preds = no_obj & no_obj_preds
-        total_no_obj_preds = torch.sum(no_obj_preds)
+            # No-object detection recall and precision
+            no_obj_corr += torch.sum(preds[i][no_obj][..., 0] < thres)
+            total_no_obj += torch.sum(no_obj)
+            no_obj_preds = preds[i][..., 0] < thres
+            correct_no_obj_preds = no_obj & no_obj_preds
+            total_no_obj_preds = torch.sum(no_obj_preds)
 
-    class_score = (100 * class_corr / total_class).item()
-    # Recall calculations
-    obj_recall = (100 * obj_corr / total_obj).item()
-    no_obj_recall = (100 * no_obj_corr / total_no_obj).item()
+        class_score = (100 * class_corr / total_class).item()
+        # Recall calculations
+        obj_recall = (100 * obj_corr / total_obj).item()
+        no_obj_recall = (100 * no_obj_corr / total_no_obj).item()
 
-    # Precision calculations
-    obj_precision = (100 * correct_obj_preds.sum() / total_obj_preds).item()
-    no_obj_precision = (100 * correct_no_obj_preds.sum() / total_no_obj_preds).item()
+        # Precision calculations
+        obj_precision = (100 * correct_obj_preds.sum() / total_obj_preds).item()
+        no_obj_precision = (100 * correct_no_obj_preds.sum() / total_no_obj_preds).item()
 
     print("Class Score (Accuracy): {:.2f}%".format(class_score))
     print("Object Score (Recall): {:.2f}%".format(obj_recall))
