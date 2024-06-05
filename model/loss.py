@@ -12,7 +12,7 @@ def ciou(pred_box, gt_box):
     loss = complete_box_iou_loss(pred_box, gt_box)
     ious = 1 - loss
 
-    return loss, ious.detach()
+    return loss.mean(), ious.detach()
 
 
 class YoloV4_Loss(torch.nn.Module):
