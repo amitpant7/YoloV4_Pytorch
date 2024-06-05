@@ -176,73 +176,69 @@ def copy_wts(model, source_wts):
 
 
 import gc
+
 def check_model_accuracy(all_preds, all_targets, thres=0.5):
     """
-    all_preds: list of batches of list of tensors [[3 preds], ...]
-    all_targets: list of batches of list of tensors [[3 targets], ...]
-    thres: threshold for objectness score
+    Calculate accuracy metrics over all batches of predictions and targets.
+
+    Args:
+        all_preds: list of batches of list of tensors [[3 preds], ...]
+        all_targets: list of batches of list of tensors [[3 targets], ...]
+        thres: threshold for objectness score
+
+    Returns:
+        None
     """
     with torch.no_grad():
         total_class, class_corr = 0, 0
         total_obj, obj_corr = 0, 0
         total_no_obj, no_obj_corr = 0, 0
-        total_class_preds, correct_class_preds = 0, 0
 
         sig = torch.nn.Sigmoid()
 
-        # Process each scale separately to save memory
         for scale in range(3):
-            preds = []
-            targets = []
+            scale_class_corr, scale_total_class = 0, 0
+            scale_obj_corr, scale_total_obj = 0, 0
+            scale_no_obj_corr, scale_total_no_obj = 0, 0
 
             for batch_preds, batch_targets in zip(all_preds, all_targets):
-                preds.append(batch_preds[scale])
-                targets.append(batch_targets[scale])
+                preds = batch_preds[scale]
+                targets = batch_targets[scale]
 
-            preds = torch.cat(preds, dim=0)
-            targets = torch.cat(targets, dim=0)
+                obj = targets[..., 0] == 1  # mask for object presence
+                no_obj = targets[..., 0] == 0
 
-            obj = targets[..., 0] == 1  # mask
-            no_obj = targets[..., 0] == 0
+                preds[..., 0] = sig(preds[..., 0])
 
-            preds[..., 0] = sig(preds[..., 0])
+                # Classification Accuracy
+                class_pred = torch.argmax(preds[obj][..., 5:], dim=-1)
+                class_target = torch.argmax(targets[obj][..., 5:], dim=-1)
+                scale_class_corr += torch.sum(class_pred == class_target)
+                scale_total_class += torch.sum(obj)
 
-            # Classification Accuracy
-            class_pred = torch.argmax(preds[obj][..., 5:], dim=-1)
-            class_target = torch.argmax(targets[obj][..., 5:], dim=-1)
-            class_corr += torch.sum(class_pred == class_target)
-            total_class += torch.sum(obj)
+                # Object detection recall and precision
+                scale_obj_corr += torch.sum(preds[obj][..., 0] > thres)
+                scale_total_obj += torch.sum(obj) + 1e-6  # to avoid divide by zero
+                scale_no_obj_corr += torch.sum(preds[no_obj][..., 0] < thres)
+                scale_total_no_obj += torch.sum(no_obj)
 
-            # Object detection recall and precision
-            obj_corr += torch.sum(preds[obj][..., 0] > thres)
-            total_obj += torch.sum(obj) + 1e-6  # to avoid divide by zero
-            obj_preds = preds[..., 0] > thres
-            correct_obj_preds = obj & obj_preds
-            total_obj_preds = torch.sum(obj_preds) + 1e-6
+                # Free up memory
+                del preds, targets, obj, no_obj, class_pred, class_target
+                gc.collect()
 
-            # No-object detection recall and precision
-            no_obj_corr += torch.sum(preds[no_obj][..., 0] < thres)
-            total_no_obj += torch.sum(no_obj)
-            no_obj_preds = preds[..., 0] < thres
-            correct_no_obj_preds = no_obj & no_obj_preds
-            total_no_obj_preds = torch.sum(no_obj_preds)
-
-            # Free up memory by forcing garbage collection
-            del preds, targets
-            gc.collect()
+            class_corr += scale_class_corr
+            total_class += scale_total_class
+            obj_corr += scale_obj_corr
+            total_obj += scale_total_obj
+            no_obj_corr += scale_no_obj_corr
+            total_no_obj += scale_total_no_obj
 
         class_score = (100 * class_corr / total_class).item()
-        # Recall calculations
         obj_recall = (100 * obj_corr / total_obj).item()
         no_obj_recall = (100 * no_obj_corr / total_no_obj).item()
 
-        # Precision calculations
-        obj_precision = (100 * correct_obj_preds.sum() / total_obj_preds).item()
-        no_obj_precision = (100 * correct_no_obj_preds.sum() / total_no_obj_preds).item()
-
     print("Class Score (Accuracy): {:.2f}%".format(class_score))
     print("Object Score (Recall): {:.2f}%".format(obj_recall))
-    print("Object Score (Precision): {:.2f}%".format(obj_precision))
     print("No-object Score (Recall): {:.2f}%".format(no_obj_recall))
-    print("No-object Score (Precision): {:.2f}%".format(no_obj_precision))
+
 
