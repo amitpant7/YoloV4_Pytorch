@@ -181,7 +181,7 @@ def check_model_accuracy(all_preds, all_targets, thres=0.5):
     all_targets: list of batches of list of tensors [[3 targets], ...]
     thres: threshold for objectness score
     """
-    with torch.no_grad()
+    with torch.no_grad():
         total_class, class_corr = 0, 0
         total_obj, obj_corr = 0, 0
         total_no_obj, no_obj_corr = 0, 0
