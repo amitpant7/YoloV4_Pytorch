@@ -24,14 +24,14 @@ transformations = v2.Compose(
 
 train_transform = MyCustomTransformatioms(transformations)
 
-val_transform = MyCustomTransformatioms([
-    v2.Compose(
+val_transform = MyCustomTransformatioms(
+    v2.Compose([
         v2.RandomResizedCrop(size=(416, 416), scale=(0.9, 1), antialias=True),
         v2.ToDtype(torch.float32, scale=True),  # Normalize expects float input
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         FinalTranform(),
+    ]
     )
-]
 )
 
 
