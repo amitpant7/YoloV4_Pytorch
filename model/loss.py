@@ -95,6 +95,7 @@ class YoloV4_Loss(torch.nn.Module):
                 (torch.sigmoid(pred[obj][..., 1:3]), pred[obj][..., 3:5]), dim=-1
             )
             gt_bb = ground_truth[obj][..., 1:5]
+
             bb_cord_loss, ious = ciou(pred_bb, gt_bb)
 
             # Object loss
@@ -115,5 +116,5 @@ class YoloV4_Loss(torch.nn.Module):
             losses.append(loss)
         total_loss = torch.stack(losses).mean()
 
-        print("Losses", bb_cord_loss.item(), no_obj_loss.item(), obj_loss.item(), class_loss.item(), total_loss.item())
+        print("Loss Values", bb_cord_loss.item(), no_obj_loss.item(), obj_loss.item(), class_loss.item(), total_loss.item())
         return total_loss
