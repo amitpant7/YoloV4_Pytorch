@@ -7,8 +7,11 @@ from config import C, S, DEVICE
 
 
 def ciou(pred_box, gt_box):
-    pred_box[..., 2:4] = convert_to_corners(torch.exp(pred_box[..., 2:4]))
-    gt_box[..., 2:4] = convert_to_corners(torch.exp(gt_box[..., 2:4]))
+    pred_box[..., 2:4] = torch.exp(pred_box[..., 2:4])
+    pred_box = convert_to_corners(pred_box)
+    gt_box[..., 2:4] = torch.exp(gt_box[..., 2:4])
+    gt_box = convert_to_corners(gt_box)
+
     loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
     # ious = 1 - loss
 
