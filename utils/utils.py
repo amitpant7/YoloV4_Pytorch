@@ -161,11 +161,16 @@ def copy_wts(model, source_wts):
     org_wt = source_wts
     org_key_list = list(org_wt.keys())
 
+    matched_keys = set()  # Set to keep track of matched layers
+
     for key1 in org_key_list:
         for key2 in wts.keys():
+            if key2 in matched_keys:  # Skip if already matched
+                continue
             if org_wt[key1].shape == wts[key2].shape:
                 count += 1
-                wts[key2] = org_wt[key1]  # copy model wts
+                wts[key2] = org_wt[key1]  # Copy model weights
+                matched_keys.add(key2)  # Mark this key as matched
                 break
 
     print("Total Layers Matched:", count)
