@@ -7,8 +7,8 @@ from config import C, S, DEVICE
 
 
 def ciou(pred_box, gt_box):
-    pred_box = convert_to_corners(torch.exp(pred_box))
-    gt_box = convert_to_corners(torch.exp(gt_box))
+    pred_box[..., 2:4] = convert_to_corners(torch.exp(pred_box[..., 2:4]))
+    gt_box[..., 2:4] = convert_to_corners(torch.exp(gt_box[..., 2:4]))
     loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
     # ious = 1 - loss
 
@@ -60,9 +60,7 @@ class YoloV4_Loss(torch.nn.Module):
         self.logistic_loss = CrossEntropyLoss(
             label_smoothing=0.1
         )  # Cross-entropy loss for class probabilities
-        self.regression_loss = (
-            MSELoss()
-        )  # Mean squared error loss for bounding box regression
+
 
     def forward(self, preds, ground_truths):
         """
