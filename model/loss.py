@@ -86,15 +86,17 @@ class YoloV4_Loss(torch.nn.Module):
             #avoid loss calculation if there aren't any targets assigned
             is_zero = torch.all(ground_truth == 0)
             
-            if is_zero:
-                continue
+            # if is_zero:
+            #     continue
 
             
             # Identify object and no-object cells
             obj = ground_truth[..., 0] == 1
             no_obj = ground_truth[..., 0] == 0
+
             #TODO 
-            # in dataset prep don't do log and divide by anchors
+            # in dataset prep don't do log and divide by anchors, remove processing for gt to cx,cy as no longer need in localization
+
 
 
             pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
