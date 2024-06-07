@@ -107,7 +107,7 @@ class YoloV4_Loss(torch.nn.Module):
             pred[..., 3:5] = torch.exp(pred[..., 3:5])
             ground_truth[..., 3:5] = torch.exp(ground_truth[..., 3:5])  #log used in gt
 
-            reg_loss = self.regression_loss(pred[obj][1:5], ground_truth[obj][1:5])
+            # reg_loss = self.regression_loss(pred[obj][1:5], ground_truth[obj][1:5])
 
             cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
             pred = pred.permute(0, 3, 4, 2, 1)
@@ -147,7 +147,7 @@ class YoloV4_Loss(torch.nn.Module):
 
             # Total loss calculation with weighted components
             loss = (
-                self.lambda_bb_cord * reg_loss
+                self.lambda_bb_cord * bb_cord_loss
                 + self.lambda_no_obj * no_obj_loss
                 + self.lambda_obj * obj_loss
                 + self.lambda_class * class_loss
