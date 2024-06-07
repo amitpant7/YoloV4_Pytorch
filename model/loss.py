@@ -175,9 +175,9 @@ class YoloV4_Loss(torch.nn.Module):
                         #avoid loss calculation if there aren't any targets assigned
             
             is_zero = torch.all(ground_truth[..., 0] == 0)
-            
+
             if is_zero:
-                print("True it's zero")
+                # print("True it's zero")
                 loss = (
                 # self.lambda_bb_cord * bb_cord_loss
                 # + self.lambda_no_obj * no_obj_loss
@@ -199,5 +199,5 @@ class YoloV4_Loss(torch.nn.Module):
             losses.append(loss)
         total_loss = torch.stack(losses).sum()
 
-        print("Loss Values", bb_cord_loss.item(), focal_loss.item(), class_loss.item(), total_loss.item())
+        # print("Loss Values", bb_cord_loss.item(), focal_loss.item(), class_loss.item(), total_loss.item())
         return total_loss
