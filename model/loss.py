@@ -112,11 +112,38 @@ class YoloV4_Loss(torch.nn.Module):
             pred = preds[i]
             ground_truth = ground_truths[i]
 
-            #avoid loss calculation if there aren't any targets assigned
+                        
+            # # No-object loss
+            # no_obj_loss = self.binary_loss(
+            #     pred[no_obj][..., 0], ground_truth[no_obj][..., 0]
+            # )
+
+            # # Object loss
+            # obj_loss = self.binary_loss(pred[obj][..., 0], ground_truth[obj][..., 0])
+
+            #use focal loss insted of object, no object loss 
+
+            focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
+
+
+            # Class probability loss
+            pred_prob = pred[obj][..., 5:]
+            class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
+
+
+
+            #avoid loss calculation of bbbox if there aren't any targets assigned, only nan due to this
             is_zero = torch.all(ground_truth == 0)
             
-            # if is_zero:
-            #     continue
+            if is_zero:
+                 # Total loss calculation with weighted components
+                loss = (self.focal_lambda * focal_loss
+                    + self.lambda_class * class_loss
+                )
+
+                losses.append(loss)
+
+                continue
 
             
             # Identify object and no-object cells
@@ -160,25 +187,7 @@ class YoloV4_Loss(torch.nn.Module):
 
             bb_cord_loss, ious = ciou(pred_bb, gt_bb)
 
-            
-            # # No-object loss
-            # no_obj_loss = self.binary_loss(
-            #     pred[no_obj][..., 0], ground_truth[no_obj][..., 0]
-            # )
-
-            # # Object loss
-            # obj_loss = self.binary_loss(pred[obj][..., 0], ground_truth[obj][..., 0])
-
-            #use focal loss insted of object, no object loss 
-
-            focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
-
-
-            # Class probability loss
-            pred_prob = pred[obj][..., 5:]
-            class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
-
-            # Total loss calculation with weighted components
+                        # Total loss calculation with weighted components
             loss = (
                 self.lambda_bb_cord * bb_cord_loss
                 # + self.lambda_no_obj * no_obj_loss
