@@ -111,6 +111,10 @@ class YoloV4_Loss(torch.nn.Module):
         for i in range(len(self.S)):
             pred = preds[i]
             ground_truth = ground_truths[i]
+            
+            # Identify object and no-object cells
+            obj = ground_truth[..., 0] == 1
+            no_obj = ground_truth[..., 0] == 0
 
                         
             # # No-object loss
@@ -138,7 +142,7 @@ class YoloV4_Loss(torch.nn.Module):
             if is_zero:
                  # Total loss calculation with weighted components
                 loss = (self.focal_lambda * focal_loss
-                    + self.lambda_class * class_loss
+                    # + self.lambda_class * class_loss
                 )
 
                 losses.append(loss)
@@ -146,9 +150,6 @@ class YoloV4_Loss(torch.nn.Module):
                 continue
 
             
-            # Identify object and no-object cells
-            obj = ground_truth[..., 0] == 1
-            no_obj = ground_truth[..., 0] == 0
 
             #TODO 
             # in dataset prep don't do log and divide by anchors, remove processing for gt to cx,cy as no longer need in localization
