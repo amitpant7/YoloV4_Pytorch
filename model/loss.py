@@ -173,6 +173,7 @@ class YoloV4_Loss(torch.nn.Module):
             class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
 
                         #avoid loss calculation if there aren't any targets assigned
+            
             is_zero = torch.all(ground_truth == 0)
             
             if is_zero:
@@ -197,5 +198,5 @@ class YoloV4_Loss(torch.nn.Module):
             losses.append(loss)
         total_loss = torch.stack(losses).sum()
 
-        # print("Loss Values", bb_cord_loss.item(), no_obj_loss.item(), obj_loss.item(), class_loss.item(), total_loss.item())
+        print("Loss Values", bb_cord_loss.item(), focal_loss.item(), class_loss.item(), total_loss.item())
         return total_loss
