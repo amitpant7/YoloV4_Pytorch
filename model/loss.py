@@ -171,7 +171,7 @@ class YoloV4_Loss(torch.nn.Module):
 
             #use focal loss insted of object, no object loss 
 
-            focal_loss = self.focal(pred[obj][..., 0], ground_truth[obj][..., 0])+ self.focal(pred[no_obj][..., 0], ground_truth[no_obj][..., 0])
+            focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
 
 
             # Class probability loss
