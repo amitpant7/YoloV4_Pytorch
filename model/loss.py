@@ -11,7 +11,7 @@ def ciou(pred_box, gt_box):
     gt_box = convert_to_corners(gt_box)
     pred_box = torch.clamp(pred_box, min=0)
 
-    loss = complete_box_iou_loss(pred_box, gt_box, reduction='sum')
+    loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
     # ious = 1 - loss
 
     # if torch.isnan(loss).all():
