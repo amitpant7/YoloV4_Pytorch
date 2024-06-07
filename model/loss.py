@@ -1,6 +1,7 @@
 import torch
 from torch.nn import CrossEntropyLoss, MSELoss, BCEWithLogitsLoss
 from torchvision.ops import complete_box_iou_loss
+import torch.nn as nn
 
 from utils.utils import convert_to_corners
 from config import C, S, DEVICE, ANCHOR_BOXES
@@ -19,6 +20,26 @@ def ciou(pred_box, gt_box):
     #     print("All elements are nan.")
 
     return loss, 0
+
+
+
+class FocalLoss(nn.Module):
+    def __init__(self,gamma):
+        super().__init__()
+        self.ce_loss = nn.BCEWithLogitsLoss(reduction= 'none')
+        self.gamma = gamma
+
+    def forward(self, pred, target):
+        ce_loss = self.ce_loss(pred, target)
+        pred_prob = torch.sigmoid(pred)
+
+        # pt pt=true×pred_prob+(1−true)×(1−pred_prob).
+        pt = target * pred_prob + (1-target) * (1 - pred_prob)
+        coeff = (1-pt)**self.gamma
+
+        focal_loss = ce_loss * coeff
+        return focal_loss.mean()
+    
 
 
 class YoloV4_Loss(torch.nn.Module):
@@ -51,16 +72,18 @@ class YoloV4_Loss(torch.nn.Module):
         """
         super().__init__()
         self.device = device
-        self.lambda_no_obj = torch.tensor(0.5, device=device)
-        self.lambda_obj = torch.tensor(1.0, device=device)
+        # self.lambda_no_obj = torch.tensor(0.5, device=device)
+        # self.lambda_obj = torch.tensor(1.0, device=device)
         self.lambda_class = torch.tensor(1.0, device=device)  # 3,5 in prev
         self.lambda_bb_cord = torch.tensor(2.0, device=device)
+        self.focal_lambda = torch.tensor(1.0, device=device)
+
         self.C = C
         self.S = S
         self.A = anchor_boxes
 
         # Loss functions
-        self.binary_loss = BCEWithLogitsLoss()  # Binary cross-entropy with logits
+        # self.binary_loss = BCEWithLogitsLoss()  # Binary cross-entropy with logits
         self.logistic_loss = CrossEntropyLoss(
             label_smoothing=0.1
         )  # Cross-entropy loss for class probabilities
@@ -68,6 +91,8 @@ class YoloV4_Loss(torch.nn.Module):
         self.regression_loss = (
             MSELoss()
         ) 
+
+        self.focal = FocalLoss()
 
 
     def forward(self, preds, ground_truths):
@@ -127,10 +152,7 @@ class YoloV4_Loss(torch.nn.Module):
             ground_truth = ground_truth.permute((0, 3, 4, 1, 2))
             ground_truth[..., 3:5] *= self.A[i].to(self.device)
 
-            # No-object loss
-            no_obj_loss = self.binary_loss(
-                pred[no_obj][..., 0], ground_truth[no_obj][..., 0]
-            )
+
 
             # Bounding box loss
             pred_bb = pred[obj][..., 1:5]
@@ -138,8 +160,19 @@ class YoloV4_Loss(torch.nn.Module):
 
             bb_cord_loss, ious = ciou(pred_bb, gt_bb)
 
-            # Object loss
-            obj_loss = self.binary_loss(pred[obj][..., 0], ground_truth[obj][..., 0])
+            
+            # # No-object loss
+            # no_obj_loss = self.binary_loss(
+            #     pred[no_obj][..., 0], ground_truth[no_obj][..., 0]
+            # )
+
+            # # Object loss
+            # obj_loss = self.binary_loss(pred[obj][..., 0], ground_truth[obj][..., 0])
+
+            #use focal loss insted of object, no object loss 
+
+            focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
+
 
             # Class probability loss
             pred_prob = pred[obj][..., 5:]
@@ -148,8 +181,9 @@ class YoloV4_Loss(torch.nn.Module):
             # Total loss calculation with weighted components
             loss = (
                 self.lambda_bb_cord * bb_cord_loss
-                + self.lambda_no_obj * no_obj_loss
-                + self.lambda_obj * obj_loss
+                # + self.lambda_no_obj * no_obj_loss
+                # + self.lambda_obj * obj_loss
+                +self.focal_lambda * focal_loss
                 + self.lambda_class * class_loss
             )
 
