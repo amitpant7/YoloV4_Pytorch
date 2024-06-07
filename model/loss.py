@@ -11,7 +11,7 @@ def ciou(pred_box, gt_box):
     gt_box = convert_to_corners(gt_box)
     pred_box = torch.clamp(pred_box, min=0)
 
-    loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
+    loss = complete_box_iou_loss(pred_box, gt_box, reduction='sum')
     # ious = 1 - loss
 
     # if torch.isnan(loss).all():
@@ -147,7 +147,7 @@ class YoloV4_Loss(torch.nn.Module):
             )
 
             losses.append(loss)
-        total_loss = torch.stack(losses).mean()
+        total_loss = torch.stack(losses).sum()
 
         # print("Loss Values", bb_cord_loss.item(), no_obj_loss.item(), obj_loss.item(), class_loss.item(), total_loss.item())
         return total_loss
