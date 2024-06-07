@@ -93,11 +93,13 @@ class YoloV4_Loss(torch.nn.Module):
             # Identify object and no-object cells
             obj = ground_truth[..., 0] == 1
             no_obj = ground_truth[..., 0] == 0
+            #TODO 
+            # in dataset prep don't do log and divide by anchors
 
 
             pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
             pred[..., 3:5] = torch.exp(pred[..., 3:5])
-            ground_truth[..., 2:4] = torch.exp(ground_truth[..., 2:4])  #log used in gt
+            ground_truth[..., 3:5] = torch.exp(ground_truth[..., 3:5])  #log used in gt
             cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
             pred = pred.permute(0, 3, 4, 2, 1)
             pred[..., 1:2, :, :] += cx
@@ -106,6 +108,7 @@ class YoloV4_Loss(torch.nn.Module):
             pred[..., 2:3, :, :] += cy
             pred = pred.permute((0, 3, 4, 1, 2))
             pred[..., 3:5] *= self.A[i].to(self.device)
+            ground_truth[..., 3:5] *= self.A[i].to(self.device)
 
             # No-object loss
             no_obj_loss = self.binary_loss(
