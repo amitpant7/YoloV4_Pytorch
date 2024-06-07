@@ -3,7 +3,7 @@ from torch.nn import CrossEntropyLoss, MSELoss, BCEWithLogitsLoss
 from torchvision.ops import complete_box_iou_loss
 
 from utils.utils import convert_to_corners
-from config import C, S, DEVICE
+from config import C, S, DEVICE, ANCHOR_BOXES
 
 
 def ciou(pred_box, gt_box):
@@ -40,7 +40,7 @@ class YoloV4_Loss(torch.nn.Module):
         regression_loss (torch.nn.Module): Mean squared error loss for bounding box regression.
     """
 
-    def __init__(self, C=C, S=S, device=DEVICE):
+    def __init__(self, C=C, S=S, device=DEVICE, anchor_boxes = ANCHOR_BOXES ):
         """
         Initializes the YOLOv3 loss function.
 
@@ -57,6 +57,7 @@ class YoloV4_Loss(torch.nn.Module):
         self.lambda_bb_cord = torch.tensor(2.0, device=device)
         self.C = C
         self.S = S
+        self.A = anchor_boxes
 
         # Loss functions
         self.binary_loss = BCEWithLogitsLoss()  # Binary cross-entropy with logits
@@ -97,13 +98,14 @@ class YoloV4_Loss(torch.nn.Module):
             pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
             pred[..., 3:5] = torch.exp(pred[..., 3:5])
             ground_truth[..., 2:4] = torch.exp(ground_truth[..., 2:4])  #log used in gt
-
             cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
             pred = pred.permute(0, 3, 4, 2, 1)
             pred[..., 1:2, :, :] += cx
+            
             pred = pred.permute(0, 1, 2, 4, 3)
             pred[..., 2:3, :, :] += cy
             pred = pred.permute((0, 3, 4, 1, 2))
+            pred[..., 3:5] *= self.A[i].to(self.device)
 
             # No-object loss
             no_obj_loss = self.binary_loss(
