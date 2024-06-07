@@ -121,7 +121,7 @@ def visualize_bb(samples):
         _, height, width = img.size()
 
         corr_bboxes = []
-        for i,bbox in enumerate(bboxes):
+        for i, bbox in enumerate(bboxes):
             x, y = bbox[0], bbox[1]  # Center of the bounding box
             box_width, box_height = bbox[2], bbox[3]
 
@@ -137,7 +137,7 @@ def visualize_bb(samples):
             corr_bboxes
         )  # Convert to tensor for draw_bounding_boxes
         img_with_bbox = draw_bounding_boxes(
-            img, corr_bboxes, colors=[colors[label] for label in labels], width=3, labels=labels[i], font_size=12 
+            img, corr_bboxes, colors=[colors[label] for label in labels], width=3, labels=labels[i:i+1], font_size=12 
         )
         images.append(img_with_bbox)
 
