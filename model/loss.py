@@ -98,7 +98,7 @@ class YoloV4_Loss(torch.nn.Module):
             pred[..., 3:5] = torch.exp(pred[..., 3:5])
             ground_truth[..., 2:4] = torch.exp(ground_truth[..., 2:4])  #log used in gt
 
-            cx = cy = torch.tensor([i for i in range(S[i])], device=self.device)
+            cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
             pred = pred.permute(0, 3, 4, 2, 1)
             pred[..., 1:2, :, :] += cx
             pred = pred.permute(0, 1, 2, 4, 3)
