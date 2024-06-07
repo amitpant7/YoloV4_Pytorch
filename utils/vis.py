@@ -1,6 +1,6 @@
 from config import *
 from .postprocess import process_preds, non_max_suppression
-from .dataset import visualize_bb
+from .utils import visualize_bb
 
 
 def visualize_outputs(
