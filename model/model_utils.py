@@ -50,6 +50,8 @@ class ResidualBlock(nn.Module):
                 nn.Sequential(
                     CNNBlock(channels, channels // 2, 1),
                     CNNBlock(channels // 2, channels, 3, padding=1),
+                    SpatialAttention(channels),
+                    CNNBlock(channels, channels, 1)
                 )
             ]
 
@@ -142,3 +144,15 @@ class CLBBlockx2(nn.Module):
 
     def forward(self, x):
         return self.layers(x)
+
+
+class SpatialAttention(nn.Module):
+    def __init__(self, in_channels):
+        super().__init__()
+        self.conv = nn.Conv2d(in_channels, out_channels=1, kernel_size=1, bias=False)
+        self.norm =  nn.BatchNorm2d(1)
+        self.sig = nn.Sigmoid()
+    
+    def forward(self, x):
+        scale = self.sig(self.norm(self.conv(x)))
+        return x*scale

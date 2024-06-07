@@ -7,10 +7,9 @@ from config import C, S, DEVICE
 
 
 def ciou(pred_box, gt_box):
-    pred_box[..., 2:4] = torch.exp(pred_box[..., 2:4])
     pred_box = convert_to_corners(pred_box)
-    gt_box[..., 2:4] = torch.exp(gt_box[..., 2:4])
     gt_box = convert_to_corners(gt_box)
+    pred_box = torch.clamp(pred_box, min=0)
 
     loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
     # ious = 1 - loss
@@ -51,6 +50,7 @@ class YoloV4_Loss(torch.nn.Module):
             device (str, optional): Device to place the tensors on. Defaults to 'cpu'.
         """
         super().__init__()
+        self.device = device
         self.lambda_no_obj = torch.tensor(0.5, device=device)
         self.lambda_obj = torch.tensor(1.0, device=device)
         self.lambda_class = torch.tensor(1.0, device=device)  # 3,5 in prev
@@ -88,9 +88,22 @@ class YoloV4_Loss(torch.nn.Module):
             if is_zero:
                 continue
 
+            
             # Identify object and no-object cells
             obj = ground_truth[..., 0] == 1
             no_obj = ground_truth[..., 0] == 0
+
+
+            pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
+            pred[..., 3:5] = torch.exp(pred[..., 3:5])
+            ground_truth[..., 2:4] = torch.exp(ground_truth[..., 2:4])  #log used in gt
+
+            cx = cy = torch.tensor([i for i in range(S[i])], device=self.device)
+            pred = pred.permute(0, 3, 4, 2, 1)
+            pred[..., 1:2, :, :] += cx
+            pred = pred.permute(0, 1, 2, 4, 3)
+            pred[..., 2:3, :, :] += cy
+            pred = pred.permute((0, 3, 4, 1, 2))
 
             # No-object loss
             no_obj_loss = self.binary_loss(
@@ -98,9 +111,7 @@ class YoloV4_Loss(torch.nn.Module):
             )
 
             # Bounding box loss
-            pred_bb = torch.cat(
-                (torch.sigmoid(pred[obj][..., 1:3]), pred[obj][..., 3:5]), dim=-1
-            )
+            pred_bb = pred[obj][..., 1:5]
             gt_bb = ground_truth[obj][..., 1:5]
 
             bb_cord_loss, ious = ciou(pred_bb, gt_bb)
