@@ -129,14 +129,7 @@ class YoloV4_Loss(torch.nn.Module):
 
             focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
 
-
-            # Class probability loss
-            pred_prob = pred[obj][..., 5:]
-            class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
-
-
-
-            #avoid loss calculation of bbbox if there aren't any targets assigned, only nan due to this
+             #avoid loss calculation of bbbox if there aren't any targets assigned, only nan due to this
             is_zero = torch.all(ground_truth == 0)
             
             if is_zero:
@@ -146,10 +139,13 @@ class YoloV4_Loss(torch.nn.Module):
                 )
 
                 losses.append(loss)
-
                 continue
 
-            
+
+            # Class probability loss
+            pred_prob = pred[obj][..., 5:]
+            class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
+
 
             #TODO 
             # in dataset prep don't do log and divide by anchors, remove processing for gt to cx,cy as no longer need in localization
