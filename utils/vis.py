@@ -4,7 +4,7 @@ from .utils import visualize_bb
 
 
 def visualize_outputs(
-    indices, model, dataset, device=DEVICE, thres=0.6, iou_threshold=0.5
+    indices, model, dataset, device=DEVICE, thres=0.8, iou_threshold=0.5
 ):
     """
     Visualizes the output predictions of the model on a set of images from the dataset.

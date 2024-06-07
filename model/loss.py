@@ -108,6 +108,14 @@ class YoloV4_Loss(torch.nn.Module):
             pred[..., 2:3, :, :] += cy
             pred = pred.permute((0, 3, 4, 1, 2))
             pred[..., 3:5] *= self.A[i].to(self.device)
+
+
+            ground_truth = ground_truth.permute(0, 3, 4, 2, 1)
+            ground_truth[..., 1:2, :, :] += cx
+            
+            ground_truth = ground_truth.permute(0, 1, 2, 4, 3)
+            ground_truth[..., 2:3, :, :] += cy
+            ground_truth = ground_truth.permute((0, 3, 4, 1, 2))
             ground_truth[..., 3:5] *= self.A[i].to(self.device)
 
             # No-object loss
