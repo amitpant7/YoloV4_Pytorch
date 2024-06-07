@@ -137,7 +137,7 @@ def visualize_bb(samples):
             corr_bboxes
         )  # Convert to tensor for draw_bounding_boxes
         img_with_bbox = draw_bounding_boxes(
-            img, corr_bboxes, colors=[colors[label] for label in labels], width=3, labels=labels[i:i+1], font_size=12 
+            img, corr_bboxes, colors=[colors[label] for label in labels], width=3, 
         )
         images.append(img_with_bbox)
 
