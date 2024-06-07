@@ -92,7 +92,7 @@ class YoloV4_Loss(torch.nn.Module):
             MSELoss()
         ) 
 
-        self.focal = FocalLoss()
+        self.focal = FocalLoss(gamma=2)
 
 
     def forward(self, preds, ground_truths):
