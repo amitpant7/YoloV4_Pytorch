@@ -50,7 +50,7 @@ def visualize_outputs(
 
         filtered_bbox = bboxes[best_boxes]
         filtered_classes = classes[best_boxes]
-        print(filtered_classes)
+    
 
         if filtered_classes.size(0) > 0:
             sample = {
