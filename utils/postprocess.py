@@ -29,7 +29,7 @@ def process_preds(preds, S=S, SCALE=SCALE, anchor_boxes=ANCHOR_BOXES):
 
         pred[..., 0:1] = torch.sigmoid(pred[..., 0:1])
         pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
-        pred[..., 3:5] = torch.exp(pred[..., 3:5])
+        pred[..., 3:5] = (torch.sigmoid(pred[..., 3:5])*2)**3
 
         cx = cy = torch.tensor([i for i in range(S[i])], device=device)
         pred = pred.permute(0, 3, 4, 2, 1)

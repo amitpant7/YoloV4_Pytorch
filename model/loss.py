@@ -9,7 +9,7 @@ from config import C, S, DEVICE, ANCHOR_BOXES
 
 def ciou(pred_box, gt_box):
     pred_box = convert_to_corners(pred_box)
-    gt_box = convert_to_corners(gt_box)
+    gt_box = convert_to_corners(gt_box)      
     pred_box = torch.clamp(pred_box, min=0)
 
     loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
