@@ -75,7 +75,7 @@ class YoloV4_Loss(torch.nn.Module):
         # self.lambda_no_obj = torch.tensor(0.5, device=device)
         # self.lambda_obj = torch.tensor(1.0, device=device)
         self.lambda_class = torch.tensor(1.0, device=device)  # 3,5 in prev
-        self.lambda_bb_cord = torch.tensor(2.0, device=device)
+        self.lambda_bb_cord = torch.tensor(1.0, device=device)
         self.focal_lambda = torch.tensor(1.0, device=device)
 
         self.C = C
@@ -169,8 +169,7 @@ class YoloV4_Loss(torch.nn.Module):
 
 
             # Class probability loss
-            pred_prob = pred[obj][..., 5:]
-            class_loss = self.logistic_loss(pred_prob, ground_truth[obj][..., 5:])
+            class_loss = self.logistic_loss(pred[obj][..., 5:], ground_truth[obj][..., 5:])
 
                         #avoid loss calculation if there aren't any targets assigned
             
@@ -178,13 +177,7 @@ class YoloV4_Loss(torch.nn.Module):
 
             if is_zero:
                 # print("True it's zero")
-                loss = (
-                # self.lambda_bb_cord * bb_cord_loss
-                # + self.lambda_no_obj * no_obj_loss
-                # + self.lambda_obj * obj_loss
-                self.focal_lambda * focal_loss
-                # + self.lambda_class * class_loss
-            )
+                loss = self.focal_lambda * focal_loss
             
             else:
                 # Total loss calculation with weighted components
