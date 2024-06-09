@@ -154,7 +154,7 @@ def match_anchor_box(
 
     # I want to not assign anchor if the IOU is below this.
 
-    if iou[best] < 0.2:
+    if iou[best] < 0.1:
         best = None
 
     # Ignore anchors if they have high IOU but are not the best match
