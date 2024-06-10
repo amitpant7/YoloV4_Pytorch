@@ -169,7 +169,7 @@ class YoloV4_Loss(torch.nn.Module):
 
 
             # Class probability loss
-            class_loss = self.logistic_loss(pred[obj][..., 5:], ground_truth[obj][..., 5:])
+            class_loss = self.logistic_loss(pred[obj][..., 5:], (ground_truth[obj][..., 5].long())
 
                         #avoid loss calculation if there aren't any targets assigned
             
