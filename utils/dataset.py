@@ -95,17 +95,16 @@ class FinalTranform(torch.nn.Module):
 
                 epsilon = 1e-6
 
-                target[pos[0], pos[1], assigned_anchor_box, 0:6] = torch.tensor(
+                target[pos[0], pos[1], assigned_anchor_box, 0:5] = torch.tensor(
                     [
                         1,
                         bx,
                         by,
                         torch.log(bw_by_Pw + epsilon),
                         torch.log(bh_by_ph + epsilon),
-                        int(label)
-
                     ]
                 )
+                target[pos[0], pos[1], assigned_anchor_box, 5 + int(label)] = 1
 
                 to_exclude.append(assigned_anchor_box)
 
@@ -203,7 +202,7 @@ def inverse_target(ground_truths, S=S, SCALE=SCALE, anchor_boxes=ANCHOR_BOXES):
 
         bbox = ground_truth[ground_truth[..., 0] == 1][..., 1:5]
         labels = ground_truth[ground_truth[..., 0] == 1][..., 5]
-        
+
         all_bboxes.append(bbox)
         all_labels.append(labels)
 

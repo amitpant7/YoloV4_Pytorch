@@ -1,6 +1,6 @@
 import torch.nn as nn
 
-from .backbone import CSPDarknet53
+from .cspdarknet53 import *
 from .head import Head
 from .neck import PANnet
 
@@ -10,12 +10,15 @@ class YoloV4(nn.Module):
         super().__init__()
         self.num_classes = num_classes
         self.no_of_anchors = no_of_anchors
-        self.backbone = CSPDarknet53()
+        self.backbone = CsDarkNet53()
+
         self.neck = PANnet()
         self.head = Head(self.num_classes, self.no_of_anchors)
 
         if backbone_wts_path is not None:
             self.backbone = self.backbone._init_wts(backbone_wts_path)
+        else:
+            self.backbone = self.backbone._init_wts()
 
     def forward(self, x):
         x = self.backbone(x)

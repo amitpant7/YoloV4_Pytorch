@@ -51,7 +51,7 @@ class ResidualBlock(nn.Module):
                     CNNBlock(channels, channels // 2, 1),
                     CNNBlock(channels // 2, channels, 3, padding=1),
                     SpatialAttention(channels),
-                    CNNBlock(channels, channels, 1)
+                    CNNBlock(channels, channels, 1),
                 )
             ]
 
@@ -102,8 +102,9 @@ class FeatureOut(nn.Module):
 
 ## Extra Modules for neck
 
-POOL_SIZE = (5, 9 ,13)
-OUTPUT_SIZE = (13,13)
+POOL_SIZE = (5, 9, 13)
+OUTPUT_SIZE = (13, 13)
+
 
 class SpatialPyramidPooling(nn.Module):
     def __init__(self):
@@ -114,11 +115,10 @@ class SpatialPyramidPooling(nn.Module):
 
     def forward(self, x):
         spp = [pool(x) for pool in self.pool_layers]
-        x = [x]+spp
-        
+        x = [x] + spp
+
         return torch.cat(x, dim=1)
-    
-    
+
     def _make_pool_layers(self):
         pool_layers = []
         for pool_size in self.pool_sizes:
@@ -128,10 +128,17 @@ class SpatialPyramidPooling(nn.Module):
 
 
 class Concat(nn.Module):
-    def __init__(self):
+    def __init__(self, in_channels=None):
         super().__init__()
 
+        # if a any block to match channels befor concat, are in first part
+        self.layer = CBLBlock(2 * in_channels, in_channels, 1) if in_channels else None
+
     def forward(self, x1, x2):
+
+        if self.layer:
+            x2 = self.layer(x2)
+
         return torch.cat([x1, x2], dim=1)
 
 
@@ -150,9 +157,9 @@ class SpatialAttention(nn.Module):
     def __init__(self, in_channels):
         super().__init__()
         self.conv = nn.Conv2d(in_channels, out_channels=1, kernel_size=1, bias=False)
-        self.norm =  nn.BatchNorm2d(1)
+        self.norm = nn.BatchNorm2d(1)
         self.sig = nn.Sigmoid()
-    
+
     def forward(self, x):
         scale = self.sig(self.norm(self.conv(x)))
-        return x*scale
+        return x * scale

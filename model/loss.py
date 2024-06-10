@@ -6,20 +6,36 @@ import torch.nn as nn
 from utils.utils import convert_to_corners
 from config import C, S, DEVICE, ANCHOR_BOXES
 
+def label_smoothing(labels, smoothing_factor=0.1):
+    """
+    Apply label smoothing to one-hot encoded labels.
+
+    Parameters:
+    - one_hot_labels (np.ndarray): One-hot encoded labels with shape (num_samples, num_classes).
+    - smoothing_factor (float): The smoothing factor (usually small, e.g., 0.1).
+
+    Returns:
+    - np.ndarray: Smoothed labels with the same shape as `one_hot_labels`.
+    """
+    if smoothing_factor < 0.0 or smoothing_factor > 1.0:
+        raise ValueError("Smoothing factor should be in the range [0, 1].")
+
+    num_classes = labels.shape[1]
+    # Smooth labels by distributing smoothing_factor across all classes
+    smoothed_labels = (1 - smoothing_factor) * labels + (smoothing_factor / num_classes)
+
+    return smoothed_labels
+
 
 def ciou(pred_box, gt_box):
     pred_box = convert_to_corners(pred_box)
-    gt_box = convert_to_corners(gt_box)      
+    gt_box = convert_to_corners(gt_box)
     pred_box = torch.clamp(pred_box, min=0)
 
-    loss = complete_box_iou_loss(pred_box, gt_box, reduction='mean')
-    # ious = 1 - loss
+    loss = complete_box_iou_loss(pred_box, gt_box)
+    ious = 1 - loss.detach()
 
-    # if torch.isnan(loss).all():
-    #     # Handle the case where all elements are nan
-    #     print("All elements are nan.")
-
-    return loss, 0
+    return loss.nanmean(), ious
 
 
 
@@ -38,7 +54,7 @@ class FocalLoss(nn.Module):
         coeff = (1-pt)**self.gamma
 
         focal_loss = ce_loss * coeff
-        return focal_loss.mean()
+        return focal_loss.nanmean()
     
 
 
@@ -72,11 +88,10 @@ class YoloV4_Loss(torch.nn.Module):
         """
         super().__init__()
         self.device = device
-        # self.lambda_no_obj = torch.tensor(0.5, device=device)
-        # self.lambda_obj = torch.tensor(1.0, device=device)
-        self.lambda_class = torch.tensor(1.0, device=device)  # 3,5 in prev
-        self.lambda_bb_cord = torch.tensor(1.0, device=device)
-        self.focal_lambda = torch.tensor(1.0, device=device)
+        self.lambda_no_obj = torch.tensor(1.0, device=device)
+        self.lambda_obj = torch.tensor(6.0, device=device)
+        self.lambda_class = torch.tensor(8.0, device=device)  #7 without focal
+        self.lambda_bb = torch.tensor(1.5, device=device)
 
         self.C = C
         self.S = S
@@ -85,7 +100,7 @@ class YoloV4_Loss(torch.nn.Module):
         # Loss functions
         # self.binary_loss = BCEWithLogitsLoss()  # Binary cross-entropy with logits
         self.logistic_loss = CrossEntropyLoss(
-            label_smoothing=0.1
+            label_smoothing=0.2
         )  # Cross-entropy loss for class probabilities
 
         self.regression_loss = (
@@ -120,77 +135,76 @@ class YoloV4_Loss(torch.nn.Module):
             #TODO 
             # in dataset prep don't do log and divide by anchors, remove processing for gt to cx,cy as no longer need in localization
 
-
-
-            pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
-            pred[..., 3:5] = torch.exp(pred[..., 3:5])
-            ground_truth[..., 3:5] = torch.exp(ground_truth[..., 3:5])  #log used in gt
-
-            # reg_loss = self.regression_loss(pred[obj][1:5], ground_truth[obj][1:5])
-
-            cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
-            pred = pred.permute(0, 3, 4, 2, 1)
-            pred[..., 1:2, :, :] += cx
             
-            pred = pred.permute(0, 1, 2, 4, 3)
-            pred[..., 2:3, :, :] += cy
-            pred = pred.permute((0, 3, 4, 1, 2))
-            pred[..., 3:5] *= self.A[i].to(self.device)
+            if torch.sum(obj)>0:
+                pred[..., 1:3] = torch.sigmoid(pred[..., 1:3])
+                pred[..., 3:5] = (torch.sigmoid(pred[..., 3:5])*2)**3
+                ground_truth[..., 3:5] = torch.exp(ground_truth[..., 3:5])  #log used in gt
+
+    #             reg_loss = self.regression_loss(pred[obj][1:5], ground_truth[obj][1:5])
+
+                cx = cy = torch.tensor([i for i in range(S[i])]).to(self.device)
+                pred = pred.permute(0, 3, 4, 2, 1)
+                pred[..., 1:2, :, :] += cx
+
+                pred = pred.permute(0, 1, 2, 4, 3)
+                pred[..., 2:3, :, :] += cy
+                pred = pred.permute((0, 3, 4, 1, 2))
+                pred[..., 3:5] *= self.A[i].to(self.device)
 
 
-            ground_truth = ground_truth.permute(0, 3, 4, 2, 1)
-            ground_truth[..., 1:2, :, :] += cx
-            
-            ground_truth = ground_truth.permute(0, 1, 2, 4, 3)
-            ground_truth[..., 2:3, :, :] += cy
-            ground_truth = ground_truth.permute((0, 3, 4, 1, 2))
-            ground_truth[..., 3:5] *= self.A[i].to(self.device)
+                ground_truth = ground_truth.permute(0, 3, 4, 2, 1)
+                ground_truth[..., 1:2, :, :] += cx
+
+                ground_truth = ground_truth.permute(0, 1, 2, 4, 3)
+                ground_truth[..., 2:3, :, :] += cy
+                ground_truth = ground_truth.permute((0, 3, 4, 1, 2))
+                ground_truth[..., 3:5] *= self.A[i].to(self.device)
 
 
 
-            # Bounding box loss
-            pred_bb = pred[obj][..., 1:5]
-            gt_bb = ground_truth[obj][..., 1:5]
+                # Bounding box loss
+                pred_bb = pred[obj][..., 1:5]*SCALE[i]
+                gt_bb = ground_truth[obj][..., 1:5]*SCALE[i]
 
-            bb_cord_loss, ious = ciou(pred_bb, gt_bb)
+                bb_cord_loss, ious = ciou(pred_bb, gt_bb)
+                ious = ious.clamp(min=0.4, max=1.0)
 
-            
-            # # No-object loss
-            # no_obj_loss = self.binary_loss(
-            #     pred[no_obj][..., 0], ground_truth[no_obj][..., 0]
-            # )
+                
+                #use focal loss insted of object, no object loss 
+                obj_loss = self.focal(pred[obj][..., 0], ground_truth[obj][..., 0]*ious)
+                noobj_loss = self.focal(pred[no_obj][..., 0], ground_truth[no_obj][..., 0])
+                
+                
+                #class loss
+                
+                # class_loss = self.logistic_loss(pred[obj][..., 5:], ground_truth[obj][..., 5:]) 
+                smoothed_class = label_smoothing(ground_truth[obj][..., 5:], smoothing_factor=0.15)
+                class_loss = self.focal(pred[obj][..., 5:], smoothed_class)
 
-            # # Object loss
-            # obj_loss = self.binary_loss(pred[obj][..., 0], ground_truth[obj][..., 0])
 
-            #use focal loss insted of object, no object loss 
-
-            focal_loss = self.focal(pred[..., 0], ground_truth[..., 0])
-
-
-            # Class probability loss
-            class_loss = self.logistic_loss(pred[obj][..., 5:], (ground_truth[obj][..., 5].long())
-
-                        #avoid loss calculation if there aren't any targets assigned
-            
-            
-            is_zero = torch.all(ground_truth[..., 0] == 0)
-            if is_zero:
-                # print("True it's zero")
-                loss = self.focal_lambda * focal_loss
-            
-            else:
                 # Total loss calculation with weighted components
                 loss = (
-                    self.lambda_bb_cord * bb_cord_loss
-                    # + self.lambda_no_obj * no_obj_loss
-                    # + self.lambda_obj * obj_loss
-                    +self.focal_lambda * focal_loss
+                    self.lambda_bb * bb_cord_loss
+                    +self.lambda_obj * obj_loss
+                    +self.lambda_no_obj * noobj_loss
                     + self.lambda_class * class_loss
                 )
 
-            losses.append(loss)
+                losses.append(loss)
+        
+                
+            else:
+                noobj_loss = self.focal(pred[no_obj][..., 0], ground_truth[no_obj][..., 0])
+                                # Total loss calculation with weighted components
+                loss = self.lambda_no_obj * noobj_loss
+
+                losses.append(loss)
+      
+            
+            
+#             print("Loss Values", bb_cord_loss.item(),obj_loss.item(), noobj_loss.item(), class_loss.item())
         total_loss = torch.stack(losses).sum()
 
-        # print("Loss Values", bb_cord_loss.item(), focal_loss.item(), class_loss.item(), total_loss.item())
+        
         return total_loss

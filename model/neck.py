@@ -66,9 +66,8 @@ class PANnet(nn.Module):
             if isinstance(layer, nn.Identity):
                 first_part_features.append(x)
 
-            elif isinstance(layer, nn.Upsample):
-                x = layer(x)
-                x = torch.cat([x, in_features[count]], dim=1)
+            elif isinstance(layer, Concat):
+                x = layer(x, in_features[count])
                 count -= 1
 
             else:
@@ -99,7 +98,12 @@ class PANnet(nn.Module):
             if module["type"] == "cbl":
                 # will excute only in first part
                 if module["num_repeats"] == 2:
-                    all_layers += [CLBBlockx2(channels=in_channels)]
+
+                    all_layers += [
+                        CBLBlock(2 * in_channels, in_channels, 1),
+                        CLBBlockx2(channels=in_channels),
+                    ]
+
                     all_layers += [SpatialPyramidPooling()]
 
                     in_channels = (
@@ -135,6 +139,7 @@ class PANnet(nn.Module):
                 all_layers += [
                     CBLBlock(in_channels, in_channels // 2, 1),
                     nn.Upsample(scale_factor=2),
+                    Concat(in_channels // 2),
                 ]
 
                 in_channels = in_channels
