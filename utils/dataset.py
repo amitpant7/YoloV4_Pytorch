@@ -95,17 +95,16 @@ class FinalTranform(torch.nn.Module):
 
                 epsilon = 1e-6
 
-                target[pos[0], pos[1], assigned_anchor_box, 0:6] = torch.tensor(
+                target[pos[0], pos[1], assigned_anchor_box, 0:5] = torch.tensor(
                     [
                         1,
                         bx,
                         by,
                         torch.log(bw_by_Pw + epsilon),
                         torch.log(bh_by_ph + epsilon),
-                        int(label)
-
                     ]
                 )
+                target[pos[0], pos[1], assigned_anchor_box, 5+int(label)] = 1
 
                 to_exclude.append(assigned_anchor_box)
 
