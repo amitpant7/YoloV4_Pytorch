@@ -114,7 +114,7 @@ def quantization(
 if __name__ == "__main__":
 
     model_name = "yolov4"
-    file_path = "model.pth"
+    file_path = "yolov4_replace_finetune_wts.pth"
 
     feature_test = " float model evaluation"
     if args.quant_mode != "float":
