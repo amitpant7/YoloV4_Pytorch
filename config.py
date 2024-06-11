@@ -49,6 +49,8 @@ CLASS_ENCODING = class_encoding = {
     "tvmonitor": 19,
 }
 
+class_decoding = {v: k for k, v in class_encoding.items()}
+
 COLORS = [
     "#1f77b4",
     "#ff7f0e",
