@@ -72,7 +72,7 @@ def mean_average_precision(
     ep = 1e-6
 
     # getting back pixel values:
-    ground_truths = targets
+    ground_truths = [target.detach().clone() for target in targets]
     processed_preds = process_preds(predictions)
     pr_matrix = torch.empty(
         9, C, 2
@@ -88,7 +88,7 @@ def mean_average_precision(
         for i in range(processed_preds[0].size(0)):  # looping over entire batch
 
             # processing the preds to make it suitable
-            preds = [pred[i] for pred in processed_preds]
+            preds = [pred[i].detach().clone() for pred in processed_preds]
 
             obj = [pred[..., 0] > conf_thres for pred in preds]
 
@@ -120,17 +120,19 @@ def mean_average_precision(
 
             # nms to supress overlapping boxes
             keep = non_max_suppression(bboxes, scores, iou_thres_nms)
+            print(keep)
             bboxes = bboxes[keep]
             classes = classes[keep]
 
             gt = [gt[i].detach().clone().unsqueeze(0) for gt in ground_truths]
-            #         print(filtered_bbox[filtered_classes==0])
+
             gt_bboxes, labels = inverse_target(gt)  # inverse_target expects batched
             gt_bboxes, labels = (
                 gt_bboxes[0],
                 labels[0],
             )  # the inverse_target returns list of 3 elements, targets for each scale, but one gt is enough.
 
+            print(gt_bboxes)
             if gt_bboxes.size(0) == 0:
                 continue
 
@@ -161,15 +163,18 @@ def mean_average_precision(
                     [corr_preds, total_preds, actual_count]
                 )
 
-        #         print(local_pr_matrix)
+            #         print(local_pr_matrix)
         precision, recall = local_pr_matrix[:, 0] / (
             local_pr_matrix[:, 1] + ep
         ), local_pr_matrix[:, 0] / (
             local_pr_matrix[:, 2] + ep
         )  # pr at a certain threshold c
+
         pr_matrix[thres - 1] = torch.cat(
             (precision.view(-1, 1), recall.view(-1, 1)), dim=1
         )
+        
+        print(precision, recall)
 
     pr_matrix = pr_matrix.permute(1, 0, 2)  # now shape class, all pr values
 

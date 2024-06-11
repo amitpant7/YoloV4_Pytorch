@@ -1,0 +1,1343 @@
+digraph YoloV4 {
+	input_0 [label="type:nndct_input
+name:YoloV4::input_0
+assigned device:user
+out shape:[[1, 416, 416, 3]]" color=black]
+	"YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3
+assigned device:dpu
+out shape:[[1, 416, 416, 32]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Hardswish[2]/ret.7" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Hardswish[2]/ret.7
+assigned device:dpu
+out shape:[[1, 416, 416, 32]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.9" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.9
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.13" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.13
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.15" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.15
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.19" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.19
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.21" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.21
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.25" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.25
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.27" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.27
+assigned device:dpu
+out shape:[[1, 208, 208, 32]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.31" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.31
+assigned device:dpu
+out shape:[[1, 208, 208, 32]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.33" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.33
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.37" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.37
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.39" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.39
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.41" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.41
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.45" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.45
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.47" [label="type:nndct_concat
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.47
+assigned device:dpu
+out shape:[[1, 208, 208, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.49" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.49
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.53" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.53
+assigned device:dpu
+out shape:[[1, 208, 208, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.55" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.55
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.59" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.59
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.61" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.61
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.65" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.65
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.67" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.67
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.71" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.71
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.73" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.73
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.77" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.77
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.79" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.79
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.83" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.83
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.87" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.87
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.91" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.91
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.93" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.93
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.97" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.97
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/ret.99" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/ret.99
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.101" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.101
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.105" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.105
+assigned device:dpu
+out shape:[[1, 104, 104, 64]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/ret.107" [label="type:nndct_concat
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/ret.107
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.109" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.109
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.113" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.113
+assigned device:dpu
+out shape:[[1, 104, 104, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.115" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.115
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.119" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.119
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.121" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.121
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.125" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.125
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.127" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.127
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.131" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.131
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.133" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.133
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.137" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.137
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.139" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.139
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.143" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.143
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.147" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.147
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.151" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.151
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.153" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.153
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.157" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.157
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.161" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.161
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.165" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.165
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.167" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.167
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.171" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.171
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.175" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.175
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.179" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.179
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.181" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.181
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.185" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.185
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.189" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.189
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.193" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.193
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.195" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.195
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.199" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.199
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.203" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.203
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.207" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.207
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.209" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.209
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.213" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.213
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.217" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.217
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.221" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.221
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.223" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.223
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.227" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.227
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.231" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.231
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.235" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.235
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.237" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.237
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.241" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.241
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/ret.243" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/ret.243
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.245" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.245
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.249" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.249
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251" [label="type:nndct_concat
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.253" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.253
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.257" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.257
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.259" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.259
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.263" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.263
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.265" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.265
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.269" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.269
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.271" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.271
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.275" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.275
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.277" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.277
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.281" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.281
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.283" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.283
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.287" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.287
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.291" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.291
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.295" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.295
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.297" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.297
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.301" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.301
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.305" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.305
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.309" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.309
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.311" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.311
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.315" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.315
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.319" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.319
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.323" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.323
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.325" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.325
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.329" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.329
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.333" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.333
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.337" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.337
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.339" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.339
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.343" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.343
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.347" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.347
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.351" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.351
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.353" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.353
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.357" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.357
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.361" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.361
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.365" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.365
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.367" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.367
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.371" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.371
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.375" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.375
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.379" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.379
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.381" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.381
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.385" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.385
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/ret.387" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/ret.387
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.389" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.389
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.393" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.393
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395" [label="type:nndct_concat
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.397" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.397
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.401" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.401
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.403" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.403
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.407" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.407
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.409" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.409
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.413" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.413
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.415" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.415
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.419" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.419
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.421" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.421
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.425" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.425
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.427" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.427
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.431" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.431
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.435" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.435
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.439" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.439
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.441" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.441
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.445" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.445
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.449" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.449
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.453" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.453
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.455" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.455
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.459" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.459
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.463" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.463
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.467" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.467
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.469" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.469
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.473" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.473
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/ret.475" [label="type:nndct_elemwise_add
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/ret.475
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.477" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.477
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.481" [label="type:nndct_hswish
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.481
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/ret.483" [label="type:nndct_concat
+name:YoloV4::YoloV4/CsDarkNet53[backbone]/Stage[stage6]/ret.483
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/Conv2d[conv]/ret.485" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/Conv2d[conv]/ret.485
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/LeakyReLU[leaky]/ret.489" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/LeakyReLU[leaky]/ret.489
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.491" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.491
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.495" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.495
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.497" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.497
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[0]/31814" [label="type:nndct_maxpool
+name:YoloV4::YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[0]/31814
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[1]/31830" [label="type:nndct_maxpool
+name:YoloV4::YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[1]/31830
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[2]/31846" [label="type:nndct_maxpool
+name:YoloV4::YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[2]/31846
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503" [label="type:nndct_concat
+name:YoloV4::YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503
+assigned device:dpu
+out shape:[[1, 13, 13, 2048]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/Conv2d[conv]/ret.505" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/Conv2d[conv]/ret.505
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/LeakyReLU[leaky]/ret.509" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/LeakyReLU[leaky]/ret.509
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.511" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.511
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.515" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.515
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.517" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.517
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.521" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.521
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/Conv2d[conv]/ret.523" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/Conv2d[conv]/ret.523
+assigned device:dpu
+out shape:[[1, 13, 13, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/LeakyReLU[leaky]/ret.527" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/LeakyReLU[leaky]/ret.527
+assigned device:dpu
+out shape:[[1, 13, 13, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[6]/ret.529" [label="type:nndct_resize
+name:YoloV4::YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[6]/ret.529
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/Conv2d[conv]/ret.531" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/Conv2d[conv]/ret.531
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/LeakyReLU[leaky]/ret.535" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/LeakyReLU[leaky]/ret.535
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/ret.537" [label="type:nndct_concat
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/ret.537
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.539" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.539
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.543" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.543
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.545" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.545
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.549" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.549
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.551" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.551
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.555" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.555
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.557" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.557
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.561" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.561
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.563" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.563
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.567" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.567
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/Conv2d[conv]/ret.569" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/Conv2d[conv]/ret.569
+assigned device:dpu
+out shape:[[1, 26, 26, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/LeakyReLU[leaky]/ret.573" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/LeakyReLU[leaky]/ret.573
+assigned device:dpu
+out shape:[[1, 26, 26, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[11]/ret.575" [label="type:nndct_resize
+name:YoloV4::YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[11]/ret.575
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/Conv2d[conv]/ret.577" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/Conv2d[conv]/ret.577
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/LeakyReLU[leaky]/ret.581" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/LeakyReLU[leaky]/ret.581
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/ret.583" [label="type:nndct_concat
+name:YoloV4::YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/ret.583
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/Conv2d[conv]/ret.585" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/Conv2d[conv]/ret.585
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/LeakyReLU[leaky]/ret.589" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/LeakyReLU[leaky]/ret.589
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.591" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.591
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.595" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.595
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.597" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.597
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.601" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.601
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.603" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.603
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.607" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.607
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.609" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.609
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.613" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.613
+assigned device:dpu
+out shape:[[1, 52, 52, 128]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/Conv2d[conv]/ret.615" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/Conv2d[conv]/ret.615
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/LeakyReLU[leaky]/ret.619" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/LeakyReLU[leaky]/ret.619
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[3]/ret.621" [label="type:nndct_concat
+name:YoloV4::YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[3]/ret.621
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/Conv2d[conv]/ret.623" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/Conv2d[conv]/ret.623
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/LeakyReLU[leaky]/ret.627" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/LeakyReLU[leaky]/ret.627
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.629" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.629
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.633" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.633
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.635" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.635
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.639" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.639
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.641" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.641
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.645" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.645
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.647" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.647
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.651" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.651
+assigned device:dpu
+out shape:[[1, 26, 26, 256]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/Conv2d[conv]/ret.653" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/Conv2d[conv]/ret.653
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/LeakyReLU[leaky]/ret.657" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/LeakyReLU[leaky]/ret.657
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[7]/ret.659" [label="type:nndct_concat
+name:YoloV4::YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[7]/ret.659
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.661" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.661
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.665" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.665
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.667" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.667
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.671" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.671
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.673" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.673
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.677" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.677
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.679" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.679
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.683" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.683
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.685" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.685
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.689" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.689
+assigned device:dpu
+out shape:[[1, 13, 13, 512]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/Conv2d[conv]/ret.691" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/Conv2d[conv]/ret.691
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/LeakyReLU[leaky]/ret.695" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/LeakyReLU[leaky]/ret.695
+assigned device:dpu
+out shape:[[1, 52, 52, 256]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/Conv2d[conv]/ret.697" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/Conv2d[conv]/ret.697
+assigned device:dpu
+out shape:[[1, 52, 52, 75]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/LeakyReLU[leaky]/ret.701" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/LeakyReLU[leaky]/ret.701
+assigned device:dpu
+out shape:[[1, 52, 52, 75]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/Conv2d[conv]/ret.703" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/Conv2d[conv]/ret.703
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/LeakyReLU[leaky]/ret.707" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/LeakyReLU[leaky]/ret.707
+assigned device:dpu
+out shape:[[1, 26, 26, 512]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/Conv2d[conv]/ret.709" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/Conv2d[conv]/ret.709
+assigned device:dpu
+out shape:[[1, 26, 26, 75]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/LeakyReLU[leaky]/ret.713" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/LeakyReLU[leaky]/ret.713
+assigned device:dpu
+out shape:[[1, 26, 26, 75]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/Conv2d[conv]/ret.715" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/Conv2d[conv]/ret.715
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/LeakyReLU[leaky]/ret.719" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/LeakyReLU[leaky]/ret.719
+assigned device:dpu
+out shape:[[1, 13, 13, 1024]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/Conv2d[conv]/ret.721" [label="type:nndct_conv2d
+name:YoloV4::YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/Conv2d[conv]/ret.721
+assigned device:dpu
+out shape:[[1, 13, 13, 75]]" color=blue]
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/LeakyReLU[leaky]/ret.725" [label="type:nndct_leaky_relu
+name:YoloV4::YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/LeakyReLU[leaky]/ret.725
+assigned device:dpu
+out shape:[[1, 13, 13, 75]]" color=blue]
+	"YoloV4/ret.739" [label="type:nndct_reshape
+name:YoloV4::YoloV4/ret.739
+assigned device:dpu
+out shape:[[1, 52, 52, 3, 25]]" color=blue]
+	"YoloV4/ret.747" [label="type:nndct_reshape
+name:YoloV4::YoloV4/ret.747
+assigned device:dpu
+out shape:[[1, 26, 26, 3, 25]]" color=blue]
+	"YoloV4/ret" [label="type:nndct_reshape
+name:YoloV4::YoloV4/ret
+assigned device:dpu
+out shape:[[1, 13, 13, 3, 25]]" color=blue]
+	return_0 [label="type:nndct_return
+name:YoloV4::return_0
+assigned device:user
+out shape:[]" color=black]
+	input_0 -> "YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3"
+	"YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Conv2d[0]/ret.3" -> "YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Hardswish[2]/ret.7"
+	"YoloV4/CsDarkNet53[backbone]/Conv2dBatchLeaky[stage1]/Sequential[layers]/Hardswish[2]/ret.7" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.9"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.9" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.13"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.13" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.15"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.13" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.21"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.15" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.19"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.19" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.47"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.21" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.25"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.25" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.27"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.25" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.39"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.27" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.31"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.31" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.33"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.33" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.37"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.37" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.39"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.39" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.41"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.41" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.45"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.45" -> "YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.47"
+	"YoloV4/CsDarkNet53[backbone]/Stage2[stage2]/ret.47" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.49"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.49" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.53"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.53" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.55"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.55" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.59"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.59" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.61"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.59" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.67"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.61" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.65"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.65" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/ret.107"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.67" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.71"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.71" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.73"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.71" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.73" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.77"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.77" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.79"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.79" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.83"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.83" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.87"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block1]/ret.85" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/ret.99"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.87" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.91"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.91" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.93"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.93" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.97"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.97" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/ret.99"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/SmallBlock[block2]/ret.99" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.101"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Conv2d[0]/ret.101" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.105"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/Conv2dBatchLeaky[conv3]/Sequential[layers]/Hardswish[2]/ret.105" -> "YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/ret.107"
+	"YoloV4/CsDarkNet53[backbone]/Stage3[stage3]/ret.107" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.109"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.109" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.113"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.113" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.115"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.115" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.119"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.119" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.121"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.119" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.127"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.121" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.125"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.125" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.127" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.131"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.131" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.133"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.131" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.133" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.137"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.137" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.139"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.139" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.143"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.143" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.147"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[0]/ret.145" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.147" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.151"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.151" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.153"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.153" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.157"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.157" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.161"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[1]/ret.159" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.161" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.165"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.165" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.167"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.167" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.171"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.171" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.175"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[2]/ret.173" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.175" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.179"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.179" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.181"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.181" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.185"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.185" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.189"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[3]/ret.187" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.189" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.193"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.193" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.195"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.195" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.199"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.199" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.203"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[4]/ret.201" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.203" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.207"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.207" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.209"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.209" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.213"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.213" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.217"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[5]/ret.215" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.217" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.221"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.221" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.223"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.223" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.227"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.227" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.231"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[6]/ret.229" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/ret.243"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.231" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.235"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.235" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.237"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.237" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.241"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.241" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/ret.243"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Sequential[blocks]/SmallBlock[7]/ret.243" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.245"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.245" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.249"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.249" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.253"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage4]/ret.251" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/Conv2d[conv]/ret.577"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.253" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.257"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.257" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.259"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.259" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.263"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.263" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.265"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.263" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.271"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.265" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.269"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.269" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.271" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.275"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.275" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.277"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.275" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.277" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.281"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.281" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.283"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.283" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.287"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.287" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.291"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[0]/ret.289" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.291" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.295"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.295" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.297"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.297" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.301"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.301" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.305"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[1]/ret.303" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.305" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.309"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.309" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.311"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.311" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.315"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.315" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.319"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[2]/ret.317" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.319" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.323"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.323" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.325"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.325" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.329"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.329" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.333"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[3]/ret.331" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.333" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.337"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.337" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.339"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.339" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.343"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.343" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.347"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[4]/ret.345" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.347" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.351"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.351" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.353"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.353" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.357"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.357" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.361"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[5]/ret.359" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.361" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.365"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.365" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.367"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.367" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.371"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.371" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.375"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[6]/ret.373" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/ret.387"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.375" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.379"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.379" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.381"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.381" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.385"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.385" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/ret.387"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Sequential[blocks]/SmallBlock[7]/ret.387" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.389"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.389" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.393"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.393" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.397"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage5]/ret.395" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/Conv2d[conv]/ret.531"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Conv2d[0]/ret.397" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.401"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv1]/Sequential[layers]/Hardswish[2]/ret.401" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.403"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Conv2d[0]/ret.403" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.407"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.407" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.409"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv2]/Sequential[layers]/Hardswish[2]/ret.407" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.415"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Conv2d[0]/ret.409" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.413"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split0]/Sequential[layers]/Hardswish[2]/ret.413" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/ret.483"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Conv2d[0]/ret.415" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.419"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.419" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.421"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[split1]/Sequential[layers]/Hardswish[2]/ret.419" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.421" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.425"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.425" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.427"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.427" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.431"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.431" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.435"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[0]/ret.433" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.435" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.439"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.439" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.441"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.441" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.445"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.445" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.449"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[1]/ret.447" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.449" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.453"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.453" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.455"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.455" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.459"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.459" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.463"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[2]/ret.461" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/ret.475"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Conv2d[0]/ret.463" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.467"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[0]/Sequential[layers]/Hardswish[2]/ret.467" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.469"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Conv2d[0]/ret.469" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.473"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/Sequential[features]/Conv2dBatchLeaky[1]/Sequential[layers]/Hardswish[2]/ret.473" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/ret.475"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Sequential[blocks]/SmallBlock[3]/ret.475" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.477"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Conv2d[0]/ret.477" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.481"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/Conv2dBatchLeaky[conv4]/Sequential[layers]/Hardswish[2]/ret.481" -> "YoloV4/CsDarkNet53[backbone]/Stage[stage6]/ret.483"
+	"YoloV4/CsDarkNet53[backbone]/Stage[stage6]/ret.483" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/Conv2d[conv]/ret.485"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/Conv2d[conv]/ret.485" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/LeakyReLU[leaky]/ret.489"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[0]/LeakyReLU[leaky]/ret.489" -> "YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.491"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.491" -> "YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.495"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.495" -> "YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.497"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.497" -> "YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[0]/31814"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[1]/31830"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[2]/31846"
+	"YoloV4/PANnet[neck]/CLBBlockx2[first_part_layers]/ModuleList[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.501" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503"
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[0]/31814" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503"
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[1]/31830" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503"
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/MaxPool2d[pool_layers]/ModuleList[2]/31846" -> "YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503"
+	"YoloV4/PANnet[neck]/SpatialPyramidPooling[first_part_layers]/ModuleList[2]/ret.503" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/Conv2d[conv]/ret.505"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/Conv2d[conv]/ret.505" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/LeakyReLU[leaky]/ret.509"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CBLBlock[0]/LeakyReLU[leaky]/ret.509" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.511"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.511" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.515"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.515" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.517"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.517" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.521"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.521" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/Conv2d[conv]/ret.523"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[3]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.521" -> "YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[7]/ret.659"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/Conv2d[conv]/ret.523" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/LeakyReLU[leaky]/ret.527"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[5]/LeakyReLU[leaky]/ret.527" -> "YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[6]/ret.529"
+	"YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[6]/ret.529" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/ret.537"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/Conv2d[conv]/ret.531" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/LeakyReLU[leaky]/ret.535"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/CBLBlock[layer]/LeakyReLU[leaky]/ret.535" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/ret.537"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[7]/ret.537" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.539"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.539" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.543"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.543" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.545"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.545" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.549"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.549" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.551"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.551" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.555"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.555" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.557"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.557" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.561"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.561" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.563"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.563" -> "YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.567"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.567" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/Conv2d[conv]/ret.569"
+	"YoloV4/PANnet[neck]/Sequential[first_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.567" -> "YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[3]/ret.621"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/Conv2d[conv]/ret.569" -> "YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/LeakyReLU[leaky]/ret.573"
+	"YoloV4/PANnet[neck]/CBLBlock[first_part_layers]/ModuleList[10]/LeakyReLU[leaky]/ret.573" -> "YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[11]/ret.575"
+	"YoloV4/PANnet[neck]/Upsample[first_part_layers]/ModuleList[11]/ret.575" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/ret.583"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/Conv2d[conv]/ret.577" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/LeakyReLU[leaky]/ret.581"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/CBLBlock[layer]/LeakyReLU[leaky]/ret.581" -> "YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/ret.583"
+	"YoloV4/PANnet[neck]/Concat[first_part_layers]/ModuleList[12]/ret.583" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/Conv2d[conv]/ret.585"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/Conv2d[conv]/ret.585" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/LeakyReLU[leaky]/ret.589"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CBLBlock[0]/LeakyReLU[leaky]/ret.589" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.591"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.591" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.595"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.595" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.597"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.597" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.601"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.601" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.603"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.603" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.607"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.607" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.609"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.609" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.613"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.613" -> "YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/Conv2d[conv]/ret.615"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[0]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.613" -> "YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/Conv2d[conv]/ret.691"
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/Conv2d[conv]/ret.615" -> "YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/LeakyReLU[leaky]/ret.619"
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[2]/LeakyReLU[leaky]/ret.619" -> "YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[3]/ret.621"
+	"YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[3]/ret.621" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/Conv2d[conv]/ret.623"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/Conv2d[conv]/ret.623" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/LeakyReLU[leaky]/ret.627"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CBLBlock[0]/LeakyReLU[leaky]/ret.627" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.629"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.629" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.633"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.633" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.635"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.635" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.639"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.639" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.641"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.641" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.645"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.645" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.647"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.647" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.651"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.651" -> "YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/Conv2d[conv]/ret.653"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[4]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.651" -> "YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/Conv2d[conv]/ret.703"
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/Conv2d[conv]/ret.653" -> "YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/LeakyReLU[leaky]/ret.657"
+	"YoloV4/PANnet[neck]/CBLBlock[second_part_layers]/ModuleList[6]/LeakyReLU[leaky]/ret.657" -> "YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[7]/ret.659"
+	"YoloV4/PANnet[neck]/Concat[second_part_layers]/ModuleList[7]/ret.659" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.661"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/Conv2d[conv]/ret.661" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.665"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CBLBlock[0]/LeakyReLU[leaky]/ret.665" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.667"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.667" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.671"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.671" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.673"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.673" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.677"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[1]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.677" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.679"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/Conv2d[conv]/ret.679" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.683"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[0]/LeakyReLU[leaky]/ret.683" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.685"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/Conv2d[conv]/ret.685" -> "YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.689"
+	"YoloV4/PANnet[neck]/Sequential[second_part_layers]/ModuleList[8]/CLBBlockx2[2]/Sequential[layers]/CBLBlock[1]/LeakyReLU[leaky]/ret.689" -> "YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/Conv2d[conv]/ret.715"
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/Conv2d[conv]/ret.691" -> "YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/LeakyReLU[leaky]/ret.695"
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[0]/LeakyReLU[leaky]/ret.695" -> "YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/Conv2d[conv]/ret.697"
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/Conv2d[conv]/ret.697" -> "YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/LeakyReLU[leaky]/ret.701"
+	"YoloV4/Head[head]/Sequential[out1]/CBLBlock[1]/LeakyReLU[leaky]/ret.701" -> "YoloV4/ret.739"
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/Conv2d[conv]/ret.703" -> "YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/LeakyReLU[leaky]/ret.707"
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[0]/LeakyReLU[leaky]/ret.707" -> "YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/Conv2d[conv]/ret.709"
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/Conv2d[conv]/ret.709" -> "YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/LeakyReLU[leaky]/ret.713"
+	"YoloV4/Head[head]/Sequential[out2]/CBLBlock[1]/LeakyReLU[leaky]/ret.713" -> "YoloV4/ret.747"
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/Conv2d[conv]/ret.715" -> "YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/LeakyReLU[leaky]/ret.719"
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[0]/LeakyReLU[leaky]/ret.719" -> "YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/Conv2d[conv]/ret.721"
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/Conv2d[conv]/ret.721" -> "YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/LeakyReLU[leaky]/ret.725"
+	"YoloV4/Head[head]/Sequential[out3]/CBLBlock[1]/LeakyReLU[leaky]/ret.725" -> "YoloV4/ret"
+	"YoloV4/ret.739" -> return_0
+	"YoloV4/ret.747" -> return_0
+	"YoloV4/ret" -> return_0
+}

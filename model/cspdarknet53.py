@@ -5,13 +5,13 @@ import torch.nn.functional as F
 import torch.nn as nn
 
 
-# mish(x) = x * tanh(log(1 + e^x))
-class Mish(nn.Module):
-    def __init__(self):
-        super(Mish, self).__init__()
+# # mish(x) = x * tanh(log(1 + e^x))
+# class Mish(nn.Module):
+#     def __init__(self):
+#         super(Mish, self).__init__()
 
-    def forward(self, x):
-        return x * torch.tanh(F.softplus(x))
+#     def forward(self, x):
+#         return x * torch.tanh(F.softplus(x))
 
 
 class Conv2dBatchLeaky(nn.Module):
@@ -26,7 +26,7 @@ class Conv2dBatchLeaky(nn.Module):
         kernel_size,
         stride,
         activation="leaky",
-        leaky_slope=0.1,
+        leaky_slope= 26 / 256,
     ):
         super(Conv2dBatchLeaky, self).__init__()
 
@@ -67,7 +67,7 @@ class Conv2dBatchLeaky(nn.Module):
                     bias=False,
                 ),
                 nn.BatchNorm2d(self.out_channels),
-                Mish(),
+                nn.Hardswish(),
             )
         elif activation == "linear":
             self.layers = nn.Sequential(

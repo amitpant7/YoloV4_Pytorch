@@ -33,7 +33,7 @@ class CBLBlock(nn.Module):
             bias=False,
         )
         self.bn = nn.BatchNorm2d(out_channels)
-        self.leaky = nn.LeakyReLU(0.1)
+        self.leaky = nn.LeakyReLU(26/256)
 
     def forward(self, x):
         return self.leaky(self.bn(self.conv(x)))

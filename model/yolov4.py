@@ -17,8 +17,6 @@ class YoloV4(nn.Module):
 
         if backbone_wts_path is not None:
             self.backbone = self.backbone._init_wts(backbone_wts_path)
-        else:
-            self.backbone = self.backbone._init_wts()
 
     def forward(self, x):
         x = self.backbone(x)
