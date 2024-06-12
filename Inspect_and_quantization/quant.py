@@ -64,7 +64,7 @@ val_loader = torch.utils.data.DataLoader(
 
 
 def quantization(
-    title="optimize", model_name="yolov3", file_path="", val_loader=val_loader
+    title="optimize", model_name="yolov4", file_path="", val_loader=val_loader
 ):
 
     quant_mode = args.quant_mode
@@ -84,7 +84,9 @@ def quantization(
         batch_size = 1
         subset_len = 1
 
-    model = torch.load(file_path, map_location=device)
+    wts = torch.load(file_path, map_location=device)
+    model = YoloV4(num_classes=20)
+    model.load_state_dict(wts)
 
     input = torch.randn([batch_size, 3, 416, 416])
 
@@ -105,7 +107,8 @@ def quantization(
     if quant_mode == "calib":
         # Exporting intermediate files will be used when quant_mode is 'test'. This is must.
         quantizer.export_quant_config()
-    if deploy:
+
+    if quant_mode == "test" and deploy:
         quantizer.export_torch_script()
         quantizer.export_onnx_model()
         quantizer.export_xmodel()

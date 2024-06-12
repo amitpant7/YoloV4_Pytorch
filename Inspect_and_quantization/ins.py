@@ -14,11 +14,11 @@ target = "DPUCZDX8G_ISA1_B4096"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model
-model = torch.load("model.pth", map_location=device)
+model = YoloV4(num_classes=20)
 
 # Random Input
 random_input = torch.randn(1, 3, 416, 416)
 
 # inspection
 inspector = Inspector(target)
-inspector.inspect(model, random_input, device, output_dir="inspect", image_format="png")
+inspector.inspect(model, random_input, device, output_dir="inspect", image_format="svg")
