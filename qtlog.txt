@@ -1,0 +1,38 @@
+opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/nn/modules/prim_ops.py:116: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if not (list(self.node.out_tensors[0].shape[1:]) == list(input.size())[1:]):
+/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/quantization/quantizerimpl.py:17: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if inf.sum() > 0 or nan.sum() > 0:
+/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/pytorch_nndct/nn/modules/fix_ops.py:67: TracerWarning: Converting a tensor to a Python boolean might cause the trace to be incorrect. We can't record the data flow of Python values, so this value will be treated as a constant in the future. This means that the trace might not generalize to other inputs!
+  if (isinstance(tensor, torch.Tensor) and
+
+[VAIQ_NOTE]: YoloV4_int.pt is generated.(quantize_result/YoloV4_int.pt)
+/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/onnx/_internal/jit_utils.py:258: UserWarning: The shape inference of prim::Constant type is missing, so it may result in wrong shape inference for the exported graph. Please consider adding it in symbolic function. (Triggered internally at /opt/conda/conda-bld/pytorch_1670525491394/work/torch/csrc/jit/passes/onnx/shape_type_inference.cpp:1884.)
+  _C._jit_pass_onnx_node_shape_type_inference(node, params_dict, opset_version)
+/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/onnx/utils.py:687: UserWarning: The shape inference of prim::Constant type is missing, so it may result in wrong shape inference for the exported graph. Please consider adding it in symbolic function. (Triggered internally at /opt/conda/conda-bld/pytorch_1670525491394/work/torch/csrc/jit/passes/onnx/shape_type_inference.cpp:1884.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+/opt/vitis_ai/conda/envs/vitis-ai-pytorch/lib/python3.8/site-packages/torch/onnx/utils.py:1178: UserWarning: The shape inference of prim::Constant type is missing, so it may result in wrong shape inference for the exported graph. Please consider adding it in symbolic function. (Triggered internally at /opt/conda/conda-bld/pytorch_1670525491394/work/torch/csrc/jit/passes/onnx/shape_type_inference.cpp:1884.)
+  _C._jit_pass_onnx_graph_shape_type_inference(
+
+[VAIQ_NOTE]: YoloV4_int.onnx is generated.(quantize_result/YoloV4_int.onnx)
+
+[VAIQ_NOTE]: =>Converting to xmodel ...
+
+[VAIQ_WARN]: YoloV4::32960 is not tensor.
+
+[VAIQ_WARN]: YoloV4::32965 is not tensor.
+
+[VAIQ_WARN]: YoloV4::32970 is not tensor.
+
+[VAIQ_WARN]: YoloV4::32980 is not tensor.
+
+[VAIQ_WARN]: YoloV4::32985 is not tensor.
+
+[VAIQ_WARN]: YoloV4::32990 is not tensor.
+
+[VAIQ_WARN]: YoloV4::33000 is not tensor.
+
+[VAIQ_WARN]: YoloV4::33005 is not tensor.
+
+[VAIQ_WARN]: YoloV4::33010 is not tensor.
+
+[VAIQ_NOTE]: =>Successfully convert 'YoloV4' to xmodel.(quantize_result/YoloV4_int.xmodel)

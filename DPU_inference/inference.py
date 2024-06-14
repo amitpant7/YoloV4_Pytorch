@@ -58,7 +58,7 @@ MEANS = np.array([0.485, 0.456, 0.406])
 STD = np.array([0.229, 0.224, 0.225])
 
 
-def runYolo(dpu_runner, image, image_path, conf=0.4):
+def runYolo(dpu_runner, image, image_path, name, conf=0.85):
 
     inputTensors = dpu_runner.get_input_tensors()  #  get the model input tensor
     outputTensors = dpu_runner.get_output_tensors()  # get the model ouput tensor
@@ -134,6 +134,7 @@ def runYolo(dpu_runner, image, image_path, conf=0.4):
 
     # processing rawoutputs of model and converting from tensors(in range 0-1) to pixel values for bb
 
+    outputData = reversed(outputData)
     output_list = process_preds(outputData, S, SCALE, anchor_boxes=ANCHORS)
 
     # filtering outputs based on confidance
@@ -141,18 +142,14 @@ def runYolo(dpu_runner, image, image_path, conf=0.4):
     for output in output_list:
         filtered_outputs.append(output[output[..., 0] >= conf])
 
-    print(
-        "After filtering using conf: ",
-        filtered_outputs[0].shape,
-        filtered_outputs[2].shape,
-    )
-
     output_arr = np.concatenate(filtered_outputs, axis=0)
     # print("output after concat:", output_arr.shape)
 
     # Perform Non Max Supression
 
-    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.45)
+    bboxes, pred_conf, pred_labels = non_max_suppression(output_arr, iou_threshold=0.4)
+
+    print("Output Boxes:", bboxes, "Confidance:", pred_conf, "Classes:", pred_labels)
 
     # """Plot prediction with bounding box"""
     classes = CLASSES
@@ -203,13 +200,13 @@ def runYolo(dpu_runner, image, image_path, conf=0.4):
         )
 
     # Save generated image with detections
-    output_path = "prediction.jpg"
+    output_path = f"test_results/{name}"
     cv2.imwrite(output_path, im)
 
-    # Display image
-    cv2.imshow("Prediction", im)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # # Display image
+    # cv2.imshow("Prediction", im)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
 
 def get_child_subgraph_dpu(graph: "Graph") -> List["Subgraph"]:
@@ -253,20 +250,25 @@ def preprocess_one_image_fn(image_path):
 
 def main(argv):
 
-    image_path = argv[2]
-    image = preprocess_one_image_fn(image_path)
+    images_path = argv[2]
 
-    g = xir.Graph.deserialize(argv[2])  # Deserialize the DPU graph
-    subgraphs = get_child_subgraph_dpu(g)  # Extract DPU subgraphs from the graph
-    assert len(subgraphs) == 1  # only one DPU kernel
+    for file in os.listdir(images_path):
+        image_path = os.path.join(images_path, file)
 
-    time_start = time.time()
+        image = preprocess_one_image_fn(image_path)
 
-    """Creates DPU runner, associated with the DPU subgraph."""
-    dpu_runner = vart.Runner.create_runner(subgraphs[0], "run")
+        g = xir.Graph.deserialize(argv[1])  # Deserialize the DPU graph
+        subgraphs = get_child_subgraph_dpu(g)  # Extract DPU subgraphs from the graph
+        assert len(subgraphs) == 1  # only one DPU kernel
 
-    runYolo(dpu_runner, image, image_path)
-    del dpu_runners
+        time_start = time.time()
+
+        """Creates DPU runner, associated with the DPU subgraph."""
+        dpu_runner = vart.Runner.create_runner(subgraphs[0], "run")
+
+        runYolo(dpu_runner, image, image_path, name=file)
+
+        del dpu_runner
 
     time_end = time.time()
     timetotal = time_end - time_start
@@ -281,6 +283,6 @@ def main(argv):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("usage : python3 dpu_inference.py <xmodel_file> <image_path>")
+        print("usage : python3 dpu_inference.py <xmodel_file> <images_path>")
     else:
         main(sys.argv)

@@ -22,6 +22,7 @@ parser = argparse.ArgumentParser()
 # commands to run
 # python quant.py --quant_mode calib --subset_len 200
 # python quant.py --quant_mode test --subset_len 1 --batch_size=1 --deploy
+# vai_c_xir -x YoloV4_int.xmodel -a arch.json -o ./compiled -n yolov4
 
 parser.add_argument(
     "--subset_len",
